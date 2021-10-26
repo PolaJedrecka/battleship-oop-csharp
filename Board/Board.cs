@@ -2,8 +2,21 @@
 {
     public class Board
     {
-        private Square[,] ocean;
+        private readonly Square[,] _ocean;
+        private int size;
 
-        public bool IsPlacementOk { get; }
+        public Board(int size)
+        {
+            this.size = size;
+            _ocean = new Square[size, size];
+            
+            for (int y = 0; y < size; y++)
+            {
+                for (int x = 0; x < size; x++)
+                {
+                    _ocean[y, x] = new Square(y, x);
+                }
+            }
+        }
     }
 }

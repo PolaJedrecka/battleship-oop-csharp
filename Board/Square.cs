@@ -4,12 +4,13 @@ namespace battleship.Board
 {
     public class Square
     {
-        private (int x, int y) Position { get; set; }
+        private (int y, int x) Position { get; set; }
 
         private SquareStatus Status { get; set; }
 
-        public Square()
+        public Square(int y, int x)
         {
+            Position = (y, x);
             Status = SquareStatus.Empty;
         }
 
@@ -22,10 +23,12 @@ namespace battleship.Board
             if (Status == SquareStatus.Empty)
             {
                 return " ";
-            } else if (Status == SquareStatus.Hit)
+            }
+            else if (Status == SquareStatus.Hit)
             {
                 return "X";
-            } else if (Status == SquareStatus.Missed)
+            }
+            else if (Status == SquareStatus.Missed)
             {
                 return "#";
             }
