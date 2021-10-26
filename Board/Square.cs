@@ -22,19 +22,19 @@ namespace battleship.Board
         {
             if (Status == SquareStatus.Empty)
             {
-                return " ";
+                return "   ";
             }
             else if (Status == SquareStatus.Hit)
             {
-                return "X";
+                return " X ";
             }
             else if (Status == SquareStatus.Missed)
             {
-                return "#";
+                return " # ";
             }
             else
             {
-                return "$";
+                return " $ ";
             }
         }
     }
