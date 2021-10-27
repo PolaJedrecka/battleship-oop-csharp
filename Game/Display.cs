@@ -65,6 +65,7 @@ namespace battleship.Game
                         Console.ForegroundColor = ConsoleColor.Gray;
                         Console.BackgroundColor = ConsoleColor.DarkBlue;
                     }
+
                     Console.Write("   ");
                 }
 
@@ -84,36 +85,27 @@ namespace battleship.Game
             {
                 Console.Clear();
                 Console.WriteLine("     Hi! Welcome to Battleship Game!");
-                for (int i = 0; i < listOfOptions.Count; i++)
-                {
-                    if (pointer == i)
-                    {
-                        Console.WriteLine("     "+">>"+ listOfOptions[i] +"<<");
-                    }
-                    else
-                    {
-                        Console.WriteLine("     "+listOfOptions[i]);
-                    }
-                }
+                LoopThroughtListAndPrintResults(listOfOptions, pointer);
                 ConsoleKey key = input.GetKey();
                 pointer = Pointer(key, pointer);
                 if (key == ConsoleKey.Enter)
                 {
                     success = true;
                 }
-                
+
             }
-            
-            switch(pointer)
+
+            int result = Switcher(pointer);
+            if (result == 0)
             {
-                case 0:
-                    //Game.StartGame();
-                    break;
-                case 1:
-                    //DisplayHighScores(List<string> highScores);
-                    break;
-                case 2:
-                    break;
+                DisplayGameModes(input);
+            } else if (result == 1)
+            {
+                //DisplayHighScores(List<string> highScores);
+            }
+            else
+            {
+                break;
             }
         }
 
@@ -154,6 +146,73 @@ namespace battleship.Game
             {
                 Console.WriteLine(highScore);
             }
+        }
+
+        private void DisplayGameModes(Input input)
+        {
+            List<string> listOfModes = new List<string>() {"Easy", "Normal", "Hard"};
+            bool success = false;
+            int pointer = 0;
+            while (!success)
+            {
+                Console.Clear();
+                Console.WriteLine("     Choose difficulty level:");
+                LoopThroughtListAndPrintResults(listOfModes, pointer);
+
+                ConsoleKey key = input.GetKey();
+                pointer = Pointer(key, pointer);
+                if (key == ConsoleKey.Enter)
+                {
+                    success = true;
+                }
+            }
+
+            int result = Switcher(pointer);
+            if (result == 0)
+            {
+                // Game.EasyGame();
+            } else if (result == 1)
+            {
+                // Game.NormalGame();
+            }
+            else
+            {
+                //Game.HardGame();
+            }
+        }
+
+        private void LoopThroughtListAndPrintResults(List<string> list, int pointer)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (pointer == i)
+                {
+                    Console.WriteLine("     " + ">>" + list[i] + "<<");
+                }
+                else
+                {
+                    Console.WriteLine("     " + list[i]);
+                }
+            }
+        }
+
+        private int Switcher(int pointer)
+        {
+            int result = 0;
+            switch (pointer)
+            {
+                case 0:
+                    result = 0;
+                    break;
+                case 1:
+                    result = 1;
+                    break;
+                case 2:
+                    result = 2;
+                    break;
+            }
+
+            return result;
         }
     }
 }
