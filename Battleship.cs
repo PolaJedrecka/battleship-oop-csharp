@@ -16,11 +16,10 @@ namespace battleship
             Ship.Ship ship = new Ship.Ship(ShipType.Battleship);
             while (true)
             {
-                _display.DisplayBoardShipPlacment(_cursor,ship.GetLength());
+                _display.DisplayBoard(_cursor);
                 _input.ShipPlacment(_cursor, ship);
                 Console.ReadKey();
             }
-            
         }
     }
 }

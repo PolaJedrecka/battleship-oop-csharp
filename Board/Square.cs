@@ -19,7 +19,7 @@ namespace battleship.Board
         }
 
         public string GetCharacter()
-        {
+        { 
             if (Status == SquareStatus.Empty)
             {
                 return "   ";

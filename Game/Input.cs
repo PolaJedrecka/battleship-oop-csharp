@@ -13,7 +13,7 @@ namespace battleship.Game
 
             while (_key != ConsoleKey.Enter)
             {
-                _display.DisplayBoardShipPlacment(cursor,4);
+                _display.DisplayBoard(cursor);
                 _key = Console.ReadKey().Key;
                 switch (_key)
                 {
@@ -49,7 +49,7 @@ namespace battleship.Game
         {
             CursorMovement(cursor);
             ship.GetLength();
-            _display.DisplayBoardShipPlacment(cursor,ship.GetLength());
+            _display.DisplayBoard(cursor,ship.GetLength());
             return new List<Square>();
         }
     }
