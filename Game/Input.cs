@@ -45,12 +45,18 @@ namespace battleship.Game
             return (cursor.GetY(), cursor.GetX());
         }
         
-        public List<Square> ShipPlacment(Cursor cursor, Ship.Ship ship)
+        public List<Square> ShipPlacement(Cursor cursor, Ship.Ship ship)
         {
             CursorMovement(cursor);
             ship.GetLength();
             _display.DisplayBoardShipPlacment(cursor,ship.GetLength());
             return new List<Square>();
+        }
+
+        public ConsoleKey GetKey()
+        {
+             ConsoleKey option = Console.ReadKey().Key;
+             return option;
         }
     }
 }
