@@ -10,8 +10,8 @@ namespace battleship.Board
 
         public Square(int y, int x)
         {
-            Status = SquareStatus.Empty;
             Position = (y, x);
+            Status = SquareStatus.Empty;
         }
 
         public void DisplaySquareStatus()
@@ -23,10 +23,12 @@ namespace battleship.Board
             if (Status == SquareStatus.Empty)
             {
                 return "   ";
-            } else if (Status == SquareStatus.Hit)
+            }
+            else if (Status == SquareStatus.Hit)
             {
                 return " X ";
-            } else if (Status == SquareStatus.Missed)
+            }
+            else if (Status == SquareStatus.Missed)
             {
                 return " # ";
             }
