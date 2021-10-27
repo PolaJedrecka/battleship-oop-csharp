@@ -13,6 +13,7 @@ namespace battleship.Game
 
             while (_key != ConsoleKey.Enter)
             {
+                
                 _display.DisplayBoard(cursor);
                 _key = Console.ReadKey().Key;
                 switch (_key)

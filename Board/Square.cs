@@ -8,16 +8,36 @@ namespace battleship.Board
 
         private SquareStatus Status { get; set; }
 
+        private bool isPlacementOK; 
+
         public Square(int y, int x)
         {
             Position = (y, x);
             Status = SquareStatus.Empty;
+            isPlacementOK = true;
         }
 
-        public void DisplaySquareStatus()
+        public void setPlacementNotOK()
         {
+            isPlacementOK = false;
+        }
+        
+        public void SetMissedStatus()
+        {
+            Status = SquareStatus.Missed;
         }
 
+        public void SetHitStatus()
+        {
+            Status = SquareStatus.Hit;
+        }
+        
+        public void SetShipStatus()
+        {
+            Status = SquareStatus.Ship;
+            setPlacementNotOK();
+        }
+        
         public string GetCharacter()
         { 
             if (Status == SquareStatus.Empty)
