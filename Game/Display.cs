@@ -107,19 +107,17 @@ namespace battleship.Game
             switch(pointer)
             {
                 case 0:
-                    Console.WriteLine("dupa start");
                     //Game.StartGame();
                     break;
                 case 1:
-                    Console.WriteLine("dupa najwyższe wyniki");
-                    //DisplayHighScores;
+                    //DisplayHighScores(List<string> highScores);
                     break;
                 case 2:
                     break;
             }
         }
 
-        public int Pointer(ConsoleKey key, int pointer)
+        private int Pointer(ConsoleKey key, int pointer)
         {
             switch (key)
             {
@@ -148,6 +146,14 @@ namespace battleship.Game
             }
 
             return pointer;
+        }
+
+        private void DisplayHighScores(List<string> highScores)
+        {
+            foreach (string highScore in highScores)
+            {
+                Console.WriteLine(highScore);
+            }
         }
     }
 }
