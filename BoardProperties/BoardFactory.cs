@@ -40,7 +40,7 @@ namespace battleship.BoardProperties
                     isVertical = false;
                 }
 
-                Cursor cursor = new Cursor(x, y, isVertical);
+                Cursor cursor = new Cursor(y, x, isVertical);
                 ShipPlacement(ship, board, cursor, true);
             }
         }

@@ -40,6 +40,11 @@ namespace battleship.BoardProperties
             _status = SquareStatus.Ship;
             SetPlacementNotOk();
         }
+
+        public SquareStatus GetStatus()
+        {
+            return _status;
+        }
         
         public string GetCharacter()
         { 
@@ -49,15 +54,15 @@ namespace battleship.BoardProperties
             }
             else if (_status == SquareStatus.Hit)
             {
-                return " X ";
+                return " ⓧ ";
             }
             else if (_status == SquareStatus.Missed)
             {
-                return " # ";
+                return " ✘ ";
             }
             else
             {
-                return " $ ";
+                return " Ο ";
             }
         }
     }

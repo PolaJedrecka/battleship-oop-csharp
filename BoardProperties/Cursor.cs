@@ -4,7 +4,7 @@ namespace battleship.BoardProperties
 {
     public class Cursor
     {
-        private (int x, int y) Position { get; set; }
+        private (int y, int x) Position { get; set; }
         private bool isVertical;
 
         public Cursor()
@@ -13,10 +13,10 @@ namespace battleship.BoardProperties
             isVertical = true;
         }
 
-        public Cursor(int x, int y, bool isVertical)
+        public Cursor(int y, int x, bool isVertical)
         {
             this.isVertical = isVertical;
-            Position = (x, y);
+            Position = (y, x);
         }
 
         public void MoveLeft()

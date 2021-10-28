@@ -14,7 +14,7 @@ namespace battleship.GameProperties
         private Input _input = new Input();
         private Display _display = new Display();
         private List<Ship> _listOfAvailableShips;
-        private string Winner { get; set; }
+        private Player Winner { get; set; }
 
         public Game(int gameMode)
         {
@@ -36,12 +36,12 @@ namespace battleship.GameProperties
         {
             if (opponentMode == "Player vs. Player")
             {
-                Player player1 = new Player();
-                Player player2 = new Player();
+                Player player1 = new HumanPlayer();
+                Player player2 = new HumanPlayer();
                 Round(player1, player2);
             } else if (opponentMode == "Player vs. Computer")
             {
-                Player player1 = new Player();
+                Player player1 = new HumanPlayer();
                 Player player2;
                 switch (gameMode)
                 {
@@ -86,28 +86,50 @@ namespace battleship.GameProperties
                 Round(player1, player2);
             }
         }
-        
-        // TODO: hasWon method
-        // TODO: game over condition
-        
+
         private void Round(Player player1, Player player2)
         {
-            //player1.DeployShips;
-            //player2.DeployShips;
-            while (!HasWon())
+            player1.DeployShips(_listOfAvailableShips);
+            player2.DeployShips(_listOfAvailableShips);
+            Player shooter = player1;
+            Player receiver = player2;
+            while (!HasWon(player1,player2))
             {
-                //Player1.Shoot
-                //Player2.Shoot
+                Shoot(shooter,receiver);
+                (shooter, receiver) = (receiver, shooter);
             }
-
-            Winner = null; // TODO: przypisanie winnera
-            // _display.DisplayThePlayerWhichWonTheGame(Winner);
+            
+            _display.DisplayOutcomeWithThePlayerWhichWonTheGame(Winner);
         }
-        
+
+        private void Shoot(Player shooter, Player receiver)
+        {
+            (int y, int x) shootCoords = shooter.GiveAShootCoords(receiver.getOwnBoard().GetSize(), receiver.getOwnBoard());
+            Square shootSquare = receiver.getOwnBoard().GetSquare(shootCoords.y, shootCoords.x);
+            if (shootSquare.GetStatus() == SquareStatus.Ship)
+            {
+                shootSquare.SetHitStatus();
+            } else if (shootSquare.GetStatus() == SquareStatus.Empty)
+            {
+                shootSquare.SetMissedStatus();
+            }
+            else
+            {
+                Shoot(shooter,receiver);
+            }
+        }
         private bool HasWon(Player player1, Player player2)
         {
-            //TODO: logika wygrywania
-            return true;
+            // if (!player1.GetIsAlive())
+            // {
+            //     Winner = player2;
+            //     return true;
+            // } else if (!player2.GetIsAlive())
+            // {
+            //     Winner = player1;
+            //     return true;
+            // }
+             return false;
         }
     }
 }

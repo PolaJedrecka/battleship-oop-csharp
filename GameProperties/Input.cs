@@ -19,13 +19,13 @@ namespace battleship.GameProperties
             {
                 if (ship is null)
                 {
-                    _display.DisplayBoard(cursor, board);
+                    _display.DisplayGameplay(cursor, board);
                     length = 1;
                 }
                 else
                 {
                     bool isOk = checkPositionIsOk(cursor, board, ship.GetLength());
-                    _display.DisplayBoard(cursor, board, isOk, ship.GetLength());
+                    _display.DisplayBoardWhenShipIsPlaced(cursor, board, isOk, ship.GetLength());
                     length = ship.GetLength();
                     
                 }
@@ -88,6 +88,10 @@ namespace battleship.GameProperties
                     
                     case ConsoleKey.Enter:
                         if (!(ship is null) && checkPositionIsOk(cursor, board, ship.GetLength()))
+                        {
+                            isSuccess = true;
+                        }
+                        else if (ship is null)
                         {
                             isSuccess = true;
                         }
