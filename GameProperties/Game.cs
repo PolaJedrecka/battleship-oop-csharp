@@ -102,6 +102,7 @@ namespace battleship.GameProperties
             }
 
             _display.DisplayOutcomeWithThePlayerWhichWonTheGame(Winner);
+            _input.GetKey();
         }
 
         private void Shoot(Player shooter, Player receiver)
