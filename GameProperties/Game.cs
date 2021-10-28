@@ -11,7 +11,6 @@ namespace battleship.GameProperties
 
     public class Game
     {
-        private Cursor _cursor = new Cursor();
         private Input _input = new Input();
         private Display _display = new Display();
         private List<Ship> _listOfAvailableShips;

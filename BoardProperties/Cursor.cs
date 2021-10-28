@@ -13,6 +13,12 @@ namespace battleship.BoardProperties
             isVertical = true;
         }
 
+        public Cursor(int x, int y, bool isVertical)
+        {
+            this.isVertical = isVertical;
+            Position = (x, y);
+        }
+
         public void MoveLeft()
         {
             var valueTuple = this.Position;

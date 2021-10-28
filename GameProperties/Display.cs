@@ -10,66 +10,40 @@ namespace battleship.GameProperties
 
         public string OpponentMode { get; set; }
         
-        public void DisplayBoard(Cursor cursor)
+        public void DisplayBoard(Cursor cursor, Board board, bool isOk = true, int shipLength = 1)
         {
             Console.Clear();
             ConsoleColor foregroundColor = Console.ForegroundColor;
             ConsoleColor backgroundColor = Console.BackgroundColor;
 
-            for (int y = 0; y < 10; y++)
+            for (int y = 0; y < board.GetSize(); y++)
             {
-                for (int x = 0; x < 10; x++)
-                {
-                    if (cursor.GetX() == x && cursor.GetY() == y)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Magenta;
-                        Console.BackgroundColor = ConsoleColor.Green;
-                    }
-                    else
-                    {
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                        Console.BackgroundColor = ConsoleColor.DarkBlue;
-                    }
-
-                    Console.Write(" ");
-                }
-
-                Console.WriteLine();
-            }
-
-            Console.ForegroundColor = foregroundColor;
-            Console.BackgroundColor = backgroundColor;
-        }
-
-        public void DisplayBoardShipPlacement(Cursor cursor, int shipLength)
-        {
-            Console.Clear();
-            ConsoleColor foregroundColor = Console.ForegroundColor;
-            ConsoleColor backgroundColor = Console.BackgroundColor;
-
-            for (int y = 0; y < 10; y++)
-            {
-                for (int x = 0; x < 10; x++)
+                for (int x = 0; x < board.GetSize(); x++)
                 {
                     if (cursor.GetX() <= x && cursor.GetX() + shipLength > x && cursor.GetY() == y &&
-                        cursor.GetIsVertical())
+                        cursor.GetIsVertical() || cursor.GetX() == x && cursor.GetY() + shipLength > y &&
+                        cursor.GetY() <= y &&
+                        !cursor.GetIsVertical())
                     {
-                        Console.ForegroundColor = ConsoleColor.Magenta;
-                        Console.BackgroundColor = ConsoleColor.Green;
+                        if (isOk)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Console.BackgroundColor = ConsoleColor.Green;
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Console.BackgroundColor = ConsoleColor.Red;
+                        }
                     }
-                    else if (cursor.GetX() == x && cursor.GetY() + shipLength > y && cursor.GetY() <= y &&
-                             !cursor.GetIsVertical())
-                    {
-                        Console.ForegroundColor = ConsoleColor.Magenta;
-                        Console.BackgroundColor = ConsoleColor.Green;
-                    }
+                   
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.Gray;
                         Console.BackgroundColor = ConsoleColor.DarkBlue;
                     }
 
-                    Console.Write("   ");
+                    Console.Write(board.GetSquare(y, x).GetCharacter());
                 }
 
                 Console.WriteLine();
