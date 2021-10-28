@@ -1,4 +1,4 @@
-﻿namespace battleship.Board
+﻿namespace battleship.BoardProperties
 {
     public enum SquareStatus
     {

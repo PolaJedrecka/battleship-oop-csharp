@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using battleship.Board;
+using battleship.BoardProperties;
+using battleship.ShipProperties;
 
-namespace battleship.Game
+namespace battleship.GameProperties
 {
     public class Input
     {
@@ -45,7 +46,7 @@ namespace battleship.Game
             return (cursor.GetY(), cursor.GetX());
         }
         
-        public List<Square> ShipPlacement(Cursor cursor, Ship.Ship ship)
+        public List<Square> ShipPlacement(Cursor cursor, Ship ship)
         {
             CursorMovement(cursor);
             ship.GetLength();

@@ -1,6 +1,6 @@
 using System;
 
-namespace battleship.Board
+namespace battleship.BoardProperties
 {
     public class Cursor
     {
