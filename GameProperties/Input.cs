@@ -12,7 +12,7 @@ namespace battleship.GameProperties
         public (int, int) CursorMovement(Cursor cursor, Board board, Ship ship = null)
         {
             ConsoleKey _key;
-            int length;
+            int cursorLength;
             bool isSuccess = false;
             
             while (!isSuccess)
@@ -20,13 +20,13 @@ namespace battleship.GameProperties
                 if (ship is null)
                 {
                     _display.DisplayBoard(cursor, board);
-                    length = 1;
+                    cursorLength = 1;
                 }
                 else
                 {
                     bool isOk = checkPositionIsOk(cursor, board, ship.GetLength());
                     _display.DisplayBoard(cursor, board, isOk, ship.GetLength());
-                    length = ship.GetLength();
+                    cursorLength = ship.GetLength();
                     
                 }
 
@@ -43,10 +43,10 @@ namespace battleship.GameProperties
                     case ConsoleKey.D:
                         if (!cursor.GetIsVertical())
                         {
-                            length = 1;
+                            cursorLength = 1;
                         }
 
-                        if (cursor.GetX() + length < board.GetSize())
+                        if (cursor.GetX() + cursorLength < board.GetSize())
                         {
                             cursor.MoveRight();
                         }
@@ -64,10 +64,10 @@ namespace battleship.GameProperties
                     case ConsoleKey.S:
                         if (cursor.GetIsVertical())
                         {
-                            length = 1;
+                            cursorLength = 1;
                         }
 
-                        if (cursor.GetY() + length < board.GetSize())
+                        if (cursor.GetY() + cursorLength < board.GetSize())
                         {
                             cursor.MoveDown();
                         }
@@ -75,11 +75,11 @@ namespace battleship.GameProperties
                         break;
                     
                     case ConsoleKey.Q:
-                        if (cursor.GetIsVertical() && cursor.GetY() + length <= board.GetSize())
+                        if (cursor.GetIsVertical() && cursor.GetY() + cursorLength <= board.GetSize())
                         {
                             cursor.ChangeCursorHorizontal();
                         }
-                        else if (!cursor.GetIsVertical() && cursor.GetX() + length <= board.GetSize())
+                        else if (!cursor.GetIsVertical() && cursor.GetX() + cursorLength <= board.GetSize())
                         {
                             cursor.ChangeCursorVertical();
                         }

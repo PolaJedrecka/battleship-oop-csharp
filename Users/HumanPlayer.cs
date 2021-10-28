@@ -18,6 +18,7 @@ namespace battleship.Users
 
         public override void DeployShips(List<Ship> listOfShips)
         {
+            setLives(listOfShips);
             _boardFactory.ManualPlacement(listOfShips,ownBoard);
         }
     }

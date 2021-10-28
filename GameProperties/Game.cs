@@ -21,13 +21,13 @@ namespace battleship.GameProperties
             switch (gameMode)
             {
                 case 0:
-                    _listOfAvailableShips = new List<Ship>() {new Ship(ShipType.Submarine)};
+                    _listOfAvailableShips = new List<Ship> {new Ship(ShipType.Submarine), new Ship(ShipType.Cruiser)};
                     break;
                 case 1:
-                    _listOfAvailableShips = new List<Ship>() {new Ship(ShipType.Cruiser)};
+                    _listOfAvailableShips = new List<Ship> {new Ship(ShipType.Cruiser), new Ship(ShipType.Cruiser)};
                     break;
                 case 2:
-                    _listOfAvailableShips = new List<Ship>() {new Ship(ShipType.Destroyer)};
+                    _listOfAvailableShips = new List<Ship> {new Ship(ShipType.Destroyer)};
                     break;
             }
         }
@@ -108,11 +108,12 @@ namespace battleship.GameProperties
 
         public void shoot(Player shooter, Player receiver)
         {
-            (int x, int y) shootCoords = shooter.GiveAShootCoords(receiver.getOwnBoard().GetSize());
-            Square shootSquare = receiver.getOwnBoard().GetSquare(shootCoords.y, shootCoords.x);
+            (int x, int y) shootCoords = shooter.GiveAShootCoords(receiver.GetOwnBoard().GetSize());
+            Square shootSquare = receiver.GetOwnBoard().GetSquare(shootCoords.y, shootCoords.x);
             if (shootSquare.GetStatus() == SquareStatus.Ship)
             {
                 shootSquare.SetHitStatus();
+                receiver.updateLives();
             }else if (shootSquare.GetStatus() == SquareStatus.Empty)
             {
                 shootSquare.SetMissedStatus();
