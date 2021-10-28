@@ -12,7 +12,7 @@ namespace battleship.GameProperties
         public int GameMode { get; set; }
 
         public string OpponentMode { get; set; }
-        
+
         public void DisplayBoardWhenShipIsPlaced(Cursor cursor, Board board, bool isOk = true, int shipLength = 1)
         {
             Console.Clear();
@@ -39,7 +39,7 @@ namespace battleship.GameProperties
                             Console.BackgroundColor = ConsoleColor.Red;
                         }
                     }
-                   
+
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.Gray;
@@ -89,6 +89,7 @@ namespace battleship.GameProperties
 
                 Console.WriteLine();
             }
+
             Console.ForegroundColor = foregroundColor;
             Console.BackgroundColor = backgroundColor;
         }
@@ -109,14 +110,14 @@ namespace battleship.GameProperties
                 {
                     success = true;
                 }
-
             }
 
             int result = Switcher(pointer);
             if (result == 0)
             {
                 GameMode = DisplayGameModes(input);
-            } else if (result == 1)
+            }
+            else if (result == 1)
             {
                 GameMode = 3;
             }
@@ -125,7 +126,7 @@ namespace battleship.GameProperties
                 GameMode = 4;
             }
         }
-        
+
 
         private int DisplayGameModes(Input input)
         {
@@ -167,7 +168,8 @@ namespace battleship.GameProperties
 
         public void DisplayOpponentMode(Input input)
         {
-            List<string> listOfOpponentModes = new List<string>() {"Player vs. Player", "Player vs. Computer", "Computer vs. Computer"};
+            List<string> listOfOpponentModes = new List<string>()
+                {"Player vs. Player", "Player vs. Computer", "Computer vs. Computer"};
             bool success = false;
             int pointer = 0;
             while (!success)
@@ -188,7 +190,8 @@ namespace battleship.GameProperties
             if (result == 0)
             {
                 OpponentMode = "Player vs. Player";
-            } else if (result == 1)
+            }
+            else if (result == 1)
             {
                 OpponentMode = "Player vs. Computer";
             }
@@ -216,7 +219,7 @@ namespace battleship.GameProperties
 
             return result;
         }
-        
+
         private int Pointer(ConsoleKey key, int pointer)
         {
             switch (key)
@@ -255,6 +258,7 @@ namespace battleship.GameProperties
             {
                 Console.WriteLine(highScore);
             }
+
             Console.WriteLine("Press any key to continue...");
         }
 

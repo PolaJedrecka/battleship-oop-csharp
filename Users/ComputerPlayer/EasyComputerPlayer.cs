@@ -24,7 +24,12 @@ namespace battleship.Users.ComputerPlayer
         public override void DeployShips(List<Ship> listOfships)
         {
             setLives(listOfships);
-            _boardFactory.ManualPlacement(listOfships, ownBoard);
+            _boardFactory.RandomPlacement(listOfships, ownBoard);
+        }
+
+        public void Print()
+        {
+            
         }
     }
 }
