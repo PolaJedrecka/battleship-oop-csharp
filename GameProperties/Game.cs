@@ -36,26 +36,26 @@ namespace battleship.GameProperties
         {
             if (opponentMode == "Player vs. Player")
             {
-                Player player1 = new HumanPlayer();
-                Player player2 = new HumanPlayer();
+                Player player1 = new HumanPlayer("Player 1");
+                Player player2 = new HumanPlayer("Player 2");
                 Round(player1, player2);
             } else if (opponentMode == "Player vs. Computer")
             {
-                Player player1 = new HumanPlayer();
+                Player player1 = new HumanPlayer("Player 1");
                 Player player2;
                 switch (gameMode)
                 {
                     case 0:
-                        player2 = new EasyComputerPlayer();
+                        player2 = new EasyComputerPlayer("Player 2");
                         break;
                     case 1:
-                        player2 = new NormalComputerPlayer();
+                        player2 = new NormalComputerPlayer("Player 2");
                         break;
                     case 2:
-                        player2 = new HardComputerPlayer();
+                        player2 = new HardComputerPlayer("Player 2");
                         break;
                     default:
-                        player2 = new NormalComputerPlayer();
+                        player2 = new NormalComputerPlayer("Player 2");
                         break;
                 }
                 Round(player1, player2);
@@ -67,20 +67,20 @@ namespace battleship.GameProperties
                 switch (gameMode)
                 {
                     case 0:
-                        player1 = new EasyComputerPlayer();
-                        player2 = new EasyComputerPlayer();
+                        player1 = new EasyComputerPlayer("Player 1");
+                        player2 = new EasyComputerPlayer("Player 2");
                         break;
                     case 1:
-                        player1 = new NormalComputerPlayer();
-                        player2 = new NormalComputerPlayer();
+                        player1 = new NormalComputerPlayer("Player 1");
+                        player2 = new NormalComputerPlayer("Player 2");
                         break;
                     case 2:
-                        player1 = new HardComputerPlayer();
-                        player2 = new HardComputerPlayer();
+                        player1 = new HardComputerPlayer("Player 1");
+                        player2 = new HardComputerPlayer("Player 2");
                         break;
                     default:
-                        player1 = new NormalComputerPlayer();
-                        player2 = new NormalComputerPlayer();
+                        player1 = new NormalComputerPlayer("Player 1");
+                        player2 = new NormalComputerPlayer("Player 2");
                         break;
                 }
                 Round(player1, player2);
@@ -93,19 +93,18 @@ namespace battleship.GameProperties
             player2.DeployShips(_listOfAvailableShips);
             Player shooter = player1;
             Player receiver = player2;
-            while (!HasWon(player1,player2))
+            while (!HasWon(player1, player2))
             {
-                Shoot(shooter,receiver);
+                Shoot(shooter, receiver);
                 (shooter, receiver) = (receiver, shooter);
             }
-            
             _display.DisplayOutcomeWithThePlayerWhichWonTheGame(Winner);
         }
 
         private void Shoot(Player shooter, Player receiver)
         {
-            (int y, int x) shootCoords = shooter.GiveAShootCoords(receiver.getOwnBoard().GetSize(), receiver.getOwnBoard());
-            Square shootSquare = receiver.getOwnBoard().GetSquare(shootCoords.y, shootCoords.x);
+            (int y, int x) shootCoords = shooter.GiveAShootCoords(receiver.GetOwnBoard().GetSize(), receiver.GetOwnBoard());
+            Square shootSquare = receiver.GetOwnBoard().GetSquare(shootCoords.y, shootCoords.x);
             if (shootSquare.GetStatus() == SquareStatus.Ship)
             {
                 shootSquare.SetHitStatus();
@@ -129,7 +128,7 @@ namespace battleship.GameProperties
             //     Winner = player1;
             //     return true;
             // }
-             return false;
+            return false;
         }
     }
 }

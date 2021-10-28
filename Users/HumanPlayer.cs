@@ -13,12 +13,16 @@ namespace battleship.Users
         
         public override (int y, int x) GiveAShootCoords(int size, Board enemyBoard)
         {
-            return _input.CursorMovement(_cursor, enemyBoard);
+            return _input.CursorMovement(_cursor, enemyBoard, Name);
         }
 
         public override void DeployShips(List<Ship> listOfShips)
         {
-            _boardFactory.ManualPlacement(listOfShips,ownBoard);
+            _boardFactory.ManualPlacement(listOfShips,OwnBoard);
+        }
+
+        public HumanPlayer(string name) : base(name)
+        {
         }
     }
 }

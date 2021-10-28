@@ -6,15 +6,20 @@ namespace battleship.Users
 {
     public abstract class Player
     {
-        protected Board ownBoard = new Board(10);
+        public string Name { get; set; }
+
+        public Player(string name)
+        {
+            Name = name;
+        }
         
-        
+        protected Board OwnBoard = new Board(10);
         public abstract (int y, int x) GiveAShootCoords(int size, Board enemyBoard);
         public abstract void DeployShips(List<Ship> listOfships);
 
-        public Board getOwnBoard()
+        public Board GetOwnBoard()
         {
-            return ownBoard;
+            return OwnBoard;
         }
 
     }

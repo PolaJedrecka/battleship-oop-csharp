@@ -8,18 +8,18 @@ namespace battleship.GameProperties
     public class Input
     {
         private Display _display = new Display();
+        public string Shooter { get; set; } = "Player 1";
 
-        public (int, int) CursorMovement(Cursor cursor, Board board, Ship ship = null)
+        public (int, int) CursorMovement(Cursor cursor, Board board, string Shooter, Ship ship = null)
         {
             ConsoleKey _key;
             int length;
             bool isSuccess = false;
-            
             while (!isSuccess)
             {
                 if (ship is null)
                 {
-                    _display.DisplayGameplay(cursor, board);
+                    _display.DisplayGameplay(cursor, board, Shooter);
                     length = 1;
                 }
                 else
@@ -95,7 +95,7 @@ namespace battleship.GameProperties
                         {
                             isSuccess = true;
                         }
-
+                        
                         break;
                 }
             }
