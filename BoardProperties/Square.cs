@@ -40,6 +40,11 @@ namespace battleship.BoardProperties
             _status = SquareStatus.Ship;
             SetPlacementNotOk();
         }
+
+        public SquareStatus GetStatus()
+        {
+            return _status;
+        }
         
         public string GetCharacter()
         { 

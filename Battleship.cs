@@ -20,9 +20,9 @@ namespace battleship
                 if (gameMode == 0)
                 {
                     _display.DisplayOpponentMode(_input);
-                    string opponentMode = _display.OponentMode;
+                    string opponentMode = _display.OpponentMode;
                     Game game = new Game(gameMode);
-                    game.Run(opponentMode);
+                    game.Run(gameMode, opponentMode);
                     gameIsRunning = true;
                 } else if (gameMode == 3)
                 {

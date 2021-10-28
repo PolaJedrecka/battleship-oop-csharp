@@ -18,8 +18,6 @@ namespace battleship.BoardProperties
                 }
             }
         }
-
-
         
         public Square GetSquare(int y, int x)
         {

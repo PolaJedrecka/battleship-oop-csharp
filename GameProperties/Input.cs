@@ -98,76 +98,7 @@ namespace battleship.GameProperties
 
             return (cursor.GetY(), cursor.GetX());
         }
-
-        public void SetPlacementNotOkAroundSquare(int y, int x, Board board, bool isVertical)
-        {
-            if (y - 1 > 0 && x - 1 > 0)
-            {
-                board.GetSquare(y - 1, x - 1).SetPlacementNotOk();
-            }
-
-            if (y + 1 < board.GetSize() && x - 1 > 0)
-            {
-                board.GetSquare(y + 1, x - 1).SetPlacementNotOk();
-            }
-
-            if (y - 1 > 0 && x + 1 < board.GetSize())
-            {
-                board.GetSquare(y - 1, x + 1).SetPlacementNotOk();
-            }
-
-            if (y + 1 < board.GetSize() && x + 1 < board.GetSize())
-            {
-                board.GetSquare(y + 1, x + 1).SetPlacementNotOk();
-            }
-
-            if (isVertical)
-            {
-                if (x - 1 > 0)
-                {
-                    board.GetSquare(y, x - 1).SetPlacementNotOk();
-                }
-
-                if (x + 1 < board.GetSize())
-                {
-                    board.GetSquare(y, x + 1).SetPlacementNotOk();
-                }
-            }
-            else
-            {
-                if (y - 1 > 0)
-                {
-                    board.GetSquare(y - 1, x).SetPlacementNotOk();
-                }
-
-                if (y + 1 < board.GetSize())
-                {
-                    board.GetSquare(y + 1, x).SetPlacementNotOk();
-                }
-            }
-        }
-
-        public void ShipPlacement( Ship ship, Board board, Cursor cursor)
-        {
-            (int y, int x) firstBlockOfShip = CursorMovement(cursor, board, ship);
-
-            for (int i = 0; i < ship.GetLength(); i++)
-            {
-                if (cursor.GetIsVertical())
-                {
-                    SetPlacementNotOkAroundSquare(firstBlockOfShip.y, firstBlockOfShip.x + i, board,
-                        cursor.GetIsVertical());
-                    board.GetSquare(firstBlockOfShip.y, firstBlockOfShip.x + i).SetShipStatus();
-                }
-                else
-                {
-                    SetPlacementNotOkAroundSquare(firstBlockOfShip.y + i, firstBlockOfShip.x, board,
-                        cursor.GetIsVertical());
-                    board.GetSquare(firstBlockOfShip.y + i, firstBlockOfShip.x).SetShipStatus();
-                }
-            }
-        }
-
+        
         public bool checkPositionIsOk(Cursor cursor, Board board, int length)
         {
             for (int i = 0; i < length; i++)

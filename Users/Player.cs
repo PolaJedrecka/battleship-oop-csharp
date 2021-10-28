@@ -1,4 +1,6 @@
-﻿using battleship.BoardProperties;
+﻿using System.Collections.Generic;
+using battleship.BoardProperties;
+using battleship.ShipProperties;
 
 namespace battleship.Users
 {
@@ -6,8 +8,14 @@ namespace battleship.Users
     {
         protected Board ownBoard = new Board(10);
         
-            public abstract (int y, int x) GiveAShootCoords(int size);
-            public abstract void DeployShips();
+        
+        public abstract (int y, int x) GiveAShootCoords(int size);
+        public abstract void DeployShips(List<Ship> listOfships);
+
+        public Board getOwnBoard()
+        {
+            return ownBoard;
+        }
 
     }
 }
