@@ -1,8 +1,13 @@
-﻿namespace battleship.Users
+﻿using battleship.BoardProperties;
+
+namespace battleship.Users
 {
     public abstract class Player
     {
-        Board ownBoard
-        public abstract (int y, int x) GiveAShoot(int size);
+        protected Board ownBoard = new Board(10);
+        
+            public abstract (int y, int x) GiveAShootCoords(int size);
+            public abstract void DeployShips();
+
     }
 }
