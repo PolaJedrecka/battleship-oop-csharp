@@ -254,7 +254,7 @@ namespace battleship.GameProperties
             Console.WriteLine("Press any key to continue...");
         }
 
-        public void DisplayOutcomeWithThePlayerWhichWonTheGame(Player ThePlayerWhichWonTheGameAndIsTheWinner)
+        public void DisplayOutcomeWithThePlayerWhichWonTheGame(string ThePlayerWhichWonTheGameAndIsTheWinner)
         {
             Console.WriteLine($"The winner is... {ThePlayerWhichWonTheGameAndIsTheWinner}");
             // TODO: może jakiś score?

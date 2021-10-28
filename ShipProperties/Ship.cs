@@ -14,7 +14,7 @@ namespace battleship.ShipProperties
 
         public int GetLength()
         {
-            return type.GetHashCode();
+            return (int) type;
         }
     }
 }

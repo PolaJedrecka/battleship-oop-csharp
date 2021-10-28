@@ -7,27 +7,25 @@ using battleship.Users.ComputerPlayer;
 
 namespace battleship.GameProperties
 {
-    
-
     public class Game
     {
         private Input _input = new Input();
         private Display _display = new Display();
         private List<Ship> _listOfAvailableShips;
-        private Player Winner { get; set; }
+        private string Winner { get; set; }
 
         public Game(int gameMode)
         {
             switch (gameMode)
             {
                 case 0:
-                    _listOfAvailableShips = new List<Ship>() {new Ship(ShipType.Submarine)};
+                    _listOfAvailableShips = new List<Ship> {new Ship(ShipType.Submarine), new Ship(ShipType.Cruiser)};
                     break;
                 case 1:
-                    _listOfAvailableShips = new List<Ship>() {new Ship(ShipType.Cruiser)};
+                    _listOfAvailableShips = new List<Ship> {new Ship(ShipType.Cruiser), new Ship(ShipType.Cruiser)};
                     break;
                 case 2:
-                    _listOfAvailableShips = new List<Ship>() {new Ship(ShipType.Destroyer)};
+                    _listOfAvailableShips = new List<Ship> {new Ship(ShipType.Destroyer)};
                     break;
             }
         }
@@ -39,7 +37,8 @@ namespace battleship.GameProperties
                 Player player1 = new HumanPlayer("Player 1");
                 Player player2 = new HumanPlayer("Player 2");
                 Round(player1, player2);
-            } else if (opponentMode == "Player vs. Computer")
+            }
+            else if (opponentMode == "Player vs. Computer")
             {
                 Player player1 = new HumanPlayer("Player 1");
                 Player player2;
@@ -58,6 +57,7 @@ namespace battleship.GameProperties
                         player2 = new NormalComputerPlayer("Player 2");
                         break;
                 }
+
                 Round(player1, player2);
             }
             else
@@ -83,6 +83,7 @@ namespace battleship.GameProperties
                         player2 = new NormalComputerPlayer("Player 2");
                         break;
                 }
+
                 Round(player1, player2);
             }
         }
@@ -98,6 +99,7 @@ namespace battleship.GameProperties
                 Shoot(shooter, receiver);
                 (shooter, receiver) = (receiver, shooter);
             }
+
             _display.DisplayOutcomeWithThePlayerWhichWonTheGame(Winner);
         }
 
@@ -108,26 +110,31 @@ namespace battleship.GameProperties
             if (shootSquare.GetStatus() == SquareStatus.Ship)
             {
                 shootSquare.SetHitStatus();
-            } else if (shootSquare.GetStatus() == SquareStatus.Empty)
+                receiver.updateLives();
+            }
+            else if (shootSquare.GetStatus() == SquareStatus.Empty)
             {
                 shootSquare.SetMissedStatus();
             }
             else
             {
-                Shoot(shooter,receiver);
+                Shoot(shooter, receiver);
             }
         }
+
         private bool HasWon(Player player1, Player player2)
         {
-            // if (!player1.GetIsAlive())
-            // {
-            //     Winner = player2;
-            //     return true;
-            // } else if (!player2.GetIsAlive())
-            // {
-            //     Winner = player1;
-            //     return true;
-            // }
+            if (!player1.GetIsAlive())
+            {
+                Winner = player2.Name;
+                return true;
+            }
+            else if (!player2.GetIsAlive())
+            {
+                Winner = player1.Name;
+                return true;
+            }
+
             return false;
         }
     }

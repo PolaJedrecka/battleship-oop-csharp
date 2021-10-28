@@ -9,8 +9,7 @@ namespace battleship.Users
     {
         private Input _input = new Input();
         private Cursor _cursor = new Cursor();
-        private BoardFactory _boardFactory= new BoardFactory();
-        
+
         public override (int y, int x) GiveAShootCoords(int size, Board enemyBoard)
         {
             return _input.CursorMovement(_cursor, enemyBoard, Name);
@@ -18,6 +17,7 @@ namespace battleship.Users
 
         public override void DeployShips(List<Ship> listOfShips)
         {
+            setLives(listOfShips);
             _boardFactory.ManualPlacement(listOfShips,OwnBoard);
         }
 
