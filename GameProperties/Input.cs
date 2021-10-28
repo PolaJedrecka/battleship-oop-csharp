@@ -147,7 +147,7 @@ namespace battleship.GameProperties
             }
         }
 
-        public void ShipPlacement(Cursor cursor, Ship ship, Board board)
+        public void ShipPlacement( Ship ship, Board board, Cursor cursor)
         {
             (int y, int x) firstBlockOfShip = CursorMovement(cursor, board, ship);
 

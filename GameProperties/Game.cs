@@ -35,12 +35,12 @@ namespace battleship.GameProperties
         {
             if (opponentMode == "Player vs. Player")
             {
-                Player player1 = new Player();
-                Player player2 = new Player();
+                Player player1 = new HumanPlayer();
+                Player player2 = new HumanPlayer();
                 Round(player1, player2);
             } else if (opponentMode == "Player vs. Computer")
             {
-                Player player1 = new Player();
+                Player player1 = new HumanPlayer();
                 Player player2 = new EasyComputerPlayer();
                 Round(player1, player2);
             }

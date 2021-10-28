@@ -4,7 +4,7 @@ namespace battleship.Users.ComputerPlayer
 {
     public class EasyComputerPlayer : Player
     {
-        public (int y, int x) GiveAShoot(int size)
+        public override (int y, int x) GiveAShoot(int size)
         {
             Random random = new Random();
             int x = random.Next(0, size);
