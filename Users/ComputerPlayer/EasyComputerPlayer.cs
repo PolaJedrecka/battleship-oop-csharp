@@ -24,7 +24,7 @@ namespace battleship.Users.ComputerPlayer
         public override void DeployShips(List<Ship> listOfships)
         {
             setLives(listOfships);
-            _boardFactory.ManualPlacement(listOfships, OwnBoard);
+            _boardFactory.RandomPlacement(listOfships, OwnBoard);
         }
 
         public EasyComputerPlayer(string name) : base(name)

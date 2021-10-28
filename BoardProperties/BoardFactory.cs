@@ -11,36 +11,38 @@ namespace battleship.BoardProperties
         private Cursor _cursor = new Cursor();
         private Input _input = new Input();
         private Random _random = new Random();
-        
+
         public void RandomPlacement(List<Ship> listOfAvailableShips, Board board)
         {
             foreach (Ship ship in listOfAvailableShips)
             {
-                bool isVertical;
+                bool isVertical = false;
                 bool isSuccessed = false;
                 int x = 0;
                 int y = 0;
                 while (!isSuccessed)
                 {
+                    // int randomIsVertical = _random.Next(0, 1);
+                    // if (randomIsVertical == 0)
+                    // {
+                    //     isVertical = false;
+                    // }
+                    // else
+                    // {
+                    //     isVertical = true;
+                    // }
+
                     x = _random.Next(0, board.GetSize());
                     y = _random.Next(0, board.GetSize());
-                    if (board.GetSquare(y, x).GetPlacementOk())
+                    if (x + ship.GetLength() < board.GetSize() && board.GetSquare(y, x).GetPlacementOk())
                     {
                         isSuccessed = true;
                     }
                 }
 
-                int randomIsVertical = _random.Next(0, 1);
-                if (randomIsVertical == 0)
-                {
-                    isVertical = true;
-                }
-                else
-                {
-                    isVertical = false;
-                }
 
                 Cursor cursor = new Cursor(y, x, isVertical);
+
                 ShipPlacement(ship, board, cursor, true);
             }
         }
@@ -52,7 +54,7 @@ namespace battleship.BoardProperties
                 ShipPlacement(ship, board, _cursor);
             }
         }
-        
+
         public void SetPlacementNotOkAroundSquare(int y, int x, Board board, bool isVertical)
         {
             if (y - 1 > 0 && x - 1 > 0)
@@ -104,7 +106,7 @@ namespace battleship.BoardProperties
         public void ShipPlacement(Ship ship, Board board, Cursor cursor, bool IsComputerPlayer = false)
         {
             (int y, int x) firstBlockOfShip;
-            
+
             if (IsComputerPlayer)
             {
                 firstBlockOfShip = (cursor.GetY(), cursor.GetX());
@@ -113,7 +115,7 @@ namespace battleship.BoardProperties
             {
                 firstBlockOfShip = _input.CursorMovement(cursor, board, "Player 1", ship);
             }
-            
+
             for (int i = 0; i < ship.GetLength(); i++)
             {
                 if (_cursor.GetIsVertical())
@@ -130,6 +132,5 @@ namespace battleship.BoardProperties
                 }
             }
         }
-        
     }
 }

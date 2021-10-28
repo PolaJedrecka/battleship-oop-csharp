@@ -23,7 +23,6 @@ namespace battleship
                     string opponentMode = _display.OpponentMode;
                     Game game = new Game(gameMode);
                     game.Run(gameMode, opponentMode);
-                    gameIsRunning = true;
                 } else if (gameMode == 3)
                 {
                     List<string> test = new List<string>() {"Not implemented yet"};
@@ -32,7 +31,7 @@ namespace battleship
                 }
                 else
                 {
-                    break;
+                    gameIsRunning = true;
                 }
             }
             
