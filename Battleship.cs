@@ -14,10 +14,11 @@ namespace battleship
         public static void Main(string[] args)
         {
             Ship.Ship ship = new Ship.Ship(ShipType.Battleship);
+            Board.Board board = new Board.Board(20);
             while (true)
             {
-                _display.DisplayBoard(_cursor);
-                _input.ShipPlacment(_cursor, ship);
+                _display.DisplayBoard(_cursor,board);
+                _input.ShipPlacement(_cursor, ship, board);
                 Console.ReadKey();
             }
         }

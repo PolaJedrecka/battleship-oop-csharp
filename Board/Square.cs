@@ -4,51 +4,54 @@ namespace battleship.Board
 {
     public class Square
     {
-        private (int y, int x) Position { get; set; }
-
-        private SquareStatus Status { get; set; }
-
-        private bool isPlacementOK; 
+        
+        private (int y, int x) _position;
+        private SquareStatus _status;
+        private bool _isPlacementOk; 
 
         public Square(int y, int x)
         {
-            Position = (y, x);
-            Status = SquareStatus.Empty;
-            isPlacementOK = true;
+            _position = (y, x);
+            _status = SquareStatus.Empty;
+            _isPlacementOk = true;
         }
 
-        public void setPlacementNotOK()
+        public void SetPlacementNotOk()
         {
-            isPlacementOK = false;
+            _isPlacementOk = false;
         }
         
+        public bool GetPlacementOk()
+        {
+            return _isPlacementOk;
+        }
         public void SetMissedStatus()
         {
-            Status = SquareStatus.Missed;
+            _status = SquareStatus.Missed;
         }
 
         public void SetHitStatus()
         {
-            Status = SquareStatus.Hit;
+            _status = SquareStatus.Hit;
         }
         
         public void SetShipStatus()
         {
-            Status = SquareStatus.Ship;
-            setPlacementNotOK();
+            _status = SquareStatus.Ship;
+            SetPlacementNotOk();
         }
         
         public string GetCharacter()
         { 
-            if (Status == SquareStatus.Empty)
+            if (_status == SquareStatus.Empty)
             {
                 return "   ";
             }
-            else if (Status == SquareStatus.Hit)
+            else if (_status == SquareStatus.Hit)
             {
                 return " X ";
             }
-            else if (Status == SquareStatus.Missed)
+            else if (_status == SquareStatus.Missed)
             {
                 return " # ";
             }
