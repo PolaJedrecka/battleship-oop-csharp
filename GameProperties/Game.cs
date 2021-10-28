@@ -28,14 +28,14 @@ namespace battleship.GameProperties
             }
         }
 
-        public void Run(string OpponentMode)
+        public void Run(string opponentMode)
         {
-            if (OpponentMode == "Player vs. Player")
+            if (opponentMode == "Player vs. Player")
             {
                 Player player1 = new Player();
                 Player player2 = new Player();
                 Round(player1, player2);
-            } else if (OpponentMode == "Player vs. Computer")
+            } else if (opponentMode == "Player vs. Computer")
             {
                 Player player1 = new Player();
                 Player player2 = new ComputerPlayer();

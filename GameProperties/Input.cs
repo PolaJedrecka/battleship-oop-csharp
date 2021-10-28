@@ -56,8 +56,7 @@ namespace battleship.GameProperties
 
         public ConsoleKey GetKey()
         {
-             ConsoleKey option = Console.ReadKey().Key;
-             return option;
+            return Console.ReadKey().Key;
         }
     }
 }

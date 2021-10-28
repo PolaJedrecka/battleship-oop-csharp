@@ -234,12 +234,14 @@ namespace battleship.GameProperties
             return pointer;
         }
 
-        private void DisplayHighScores(List<string> highScores)
+        public void DisplayHighScores(List<string> highScores)
         {
+            Console.Clear();
             foreach (string highScore in highScores)
             {
                 Console.WriteLine(highScore);
             }
+            Console.WriteLine("Press any key to continue...");
         }
     }
 }
