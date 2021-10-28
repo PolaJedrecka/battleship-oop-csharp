@@ -92,8 +92,8 @@ namespace battleship.GameProperties
         
         private void Round(Player player1, Player player2)
         {
-            player1.DeployShips;
-            player2.DeployShips;
+            //player1.DeployShips;
+            //player2.DeployShips;
             while (!HasWon())
             {
                 //Player1.Shoot
@@ -104,7 +104,7 @@ namespace battleship.GameProperties
             // _display.DisplayThePlayerWhichWonTheGame(Winner);
         }
         
-        private bool HasWon()
+        private bool HasWon(Player player1, Player player2)
         {
             //TODO: logika wygrywania
             return true;
