@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using battleship.BoardProperties;
 using battleship.ShipProperties;
 using battleship.Users;
+using battleship.Users.ComputerPlayer;
 
 namespace battleship.GameProperties
 {
+    
+
     public class Game
     {
         private Cursor _cursor = new Cursor();
@@ -38,13 +41,13 @@ namespace battleship.GameProperties
             } else if (opponentMode == "Player vs. Computer")
             {
                 Player player1 = new Player();
-                Player player2 = new ComputerPlayer();
+                Player player2 = new EasyComputerPlayer();
                 Round(player1, player2);
             }
             else
             {
-                Player player1 = new ComputerPlayer();
-                Player player2 = new ComputerPlayer();
+                Player player1 = new EasyComputerPlayer();
+                Player player2 = new EasyComputerPlayer();
                 Round(player1, player2);
             }
         }

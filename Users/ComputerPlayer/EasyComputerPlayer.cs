@@ -2,7 +2,7 @@
 
 namespace battleship.Users.ComputerPlayer
 {
-    public class EasyComputerPlayer
+    public class EasyComputerPlayer : Player
     {
         public (int y, int x) GiveAShoot(int size)
         {
