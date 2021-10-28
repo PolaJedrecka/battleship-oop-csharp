@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using battleship.BoardProperties;
 using battleship.ShipProperties;
 
@@ -9,8 +10,9 @@ namespace battleship.Users
         protected Board ownBoard = new Board(10);
         protected bool isAlive = true;
         protected int lives;
-        
-        public abstract (int y, int x) GiveAShootCoords(int size);
+        protected BoardFactory _boardFactory= new BoardFactory();
+
+        public abstract (int y, int x) GiveAShootCoords(int size, Board enemyBoard);
         public abstract void DeployShips(List<Ship> listOfships);
 
         public Board GetOwnBoard()
@@ -27,7 +29,7 @@ namespace battleship.Users
         {
             foreach (Ship ship in listOfShips)
             {
-                lives += ship.GetHashCode();
+                lives += ship.GetLength();
             }
         }
 

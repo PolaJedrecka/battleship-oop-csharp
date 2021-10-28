@@ -9,11 +9,11 @@ namespace battleship.Users
     {
         private Input _input = new Input();
         private Cursor _cursor = new Cursor();
-        private BoardFactory _boardFactory= new BoardFactory();
         
-        public override (int y, int x) GiveAShootCoords(int size)
+        
+        public override (int y, int x) GiveAShootCoords(int size, Board enemyBoard)
         {
-            return _input.CursorMovement(_cursor, ownBoard);
+            return _input.CursorMovement(_cursor, enemyBoard);
         }
 
         public override void DeployShips(List<Ship> listOfShips)

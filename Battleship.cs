@@ -17,7 +17,7 @@ namespace battleship
             {
                 _display.DisplayMainMenu(_input);
                 int gameMode = _display.GameMode;
-                if (gameMode == 0)
+                if (gameMode == 0 || gameMode == 1 || gameMode == 2)
                 {
                     _display.DisplayOpponentMode(_input);
                     string opponentMode = _display.OpponentMode;
@@ -26,7 +26,7 @@ namespace battleship
                     gameIsRunning = true;
                 } else if (gameMode == 3)
                 {
-                    List<string> test = new List<string>() {"DUpa", "dupa", "dupa"};
+                    List<string> test = new List<string>() {"Not implemented yet"};
                     _display.DisplayHighScores(test);
                     _input.GetKey();
                 }

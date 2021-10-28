@@ -1,16 +1,19 @@
 ﻿using System;
 using battleship.BoardProperties;
 using System.Collections.Generic;
+using battleship.Users;
 
 namespace battleship.GameProperties
 {
+    using ShipProperties;
+
     public class Display
     {
         public int GameMode { get; set; }
 
         public string OpponentMode { get; set; }
         
-        public void DisplayBoard(Cursor cursor, Board board, bool isOk = true, int shipLength = 1)
+        public void DisplayBoardWhenShipIsPlaced(Cursor cursor, Board board, bool isOk = true, int shipLength = 1)
         {
             Console.Clear();
             ConsoleColor foregroundColor = Console.ForegroundColor;
@@ -20,7 +23,7 @@ namespace battleship.GameProperties
             {
                 for (int x = 0; x < board.GetSize(); x++)
                 {
-                    if (cursor.GetX() <= x && cursor.GetX() + shipLength > x && cursor.GetY() == y &&
+                    if (shipLength != 1 && cursor.GetX() <= x && cursor.GetX() + shipLength > x && cursor.GetY() == y &&
                         cursor.GetIsVertical() || cursor.GetX() == x && cursor.GetY() + shipLength > y &&
                         cursor.GetY() <= y &&
                         !cursor.GetIsVertical())
@@ -49,6 +52,43 @@ namespace battleship.GameProperties
                 Console.WriteLine();
             }
 
+            Console.ForegroundColor = foregroundColor;
+            Console.BackgroundColor = backgroundColor;
+        }
+
+        public void DisplayGameplay(Cursor cursor, Board board)
+        {
+            Console.Clear();
+            ConsoleColor foregroundColor = Console.ForegroundColor;
+            ConsoleColor backgroundColor = Console.BackgroundColor;
+
+            for (int y = 0; y < board.GetSize(); y++)
+            {
+                for (int x = 0; x < board.GetSize(); x++)
+                {
+                    if (cursor.GetX() == x && cursor.GetY() == y)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.BackgroundColor = ConsoleColor.Green;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                    }
+
+                    if (board.GetSquare(y, x).GetStatus() == SquareStatus.Ship)
+                    {
+                        Console.Write("   ");
+                    }
+                    else
+                    {
+                        Console.Write(board.GetSquare(y, x).GetCharacter());
+                    }
+                }
+
+                Console.WriteLine();
+            }
             Console.ForegroundColor = foregroundColor;
             Console.BackgroundColor = backgroundColor;
         }
@@ -218,7 +258,7 @@ namespace battleship.GameProperties
             Console.WriteLine("Press any key to continue...");
         }
 
-        public void DisplayThePlayerWhichWonTheGame(string ThePlayerWhichWonTheGameAndIsTheWinner)
+        public void DisplayOutcomeWithThePlayerWhichWonTheGame(string ThePlayerWhichWonTheGameAndIsTheWinner)
         {
             Console.WriteLine($"The winner is... {ThePlayerWhichWonTheGameAndIsTheWinner}");
             // TODO: może jakiś score?

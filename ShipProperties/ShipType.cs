@@ -7,5 +7,6 @@
         Battleship = 4, 
         Submarine = 5, 
         Destroyer = 6
+        
     }
 }

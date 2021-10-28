@@ -40,7 +40,7 @@ namespace battleship.BoardProperties
                     isVertical = false;
                 }
 
-                Cursor cursor = new Cursor(x, y, isVertical);
+                Cursor cursor = new Cursor(y, x, isVertical);
                 ShipPlacement(ship, board, cursor, true);
             }
         }
@@ -103,7 +103,6 @@ namespace battleship.BoardProperties
 
         public void ShipPlacement(Ship ship, Board board, Cursor cursor, bool IsComputerPlayer = false)
         {
-            bool isVertical = _cursor.GetIsVertical();
             (int y, int x) firstBlockOfShip;
             
             if (IsComputerPlayer)
@@ -117,21 +116,20 @@ namespace battleship.BoardProperties
             
             for (int i = 0; i < ship.GetLength(); i++)
             {
-                if (isVertical)
+                if (_cursor.GetIsVertical())
                 {
                     SetPlacementNotOkAroundSquare(firstBlockOfShip.y, firstBlockOfShip.x + i, board,
-                        isVertical);
+                        _cursor.GetIsVertical());
                     board.GetSquare(firstBlockOfShip.y, firstBlockOfShip.x + i).SetShipStatus();
                 }
                 else
                 {
                     SetPlacementNotOkAroundSquare(firstBlockOfShip.y + i, firstBlockOfShip.x, board,
-                        isVertical);
+                        _cursor.GetIsVertical());
                     board.GetSquare(firstBlockOfShip.y + i, firstBlockOfShip.x).SetShipStatus();
                 }
             }
         }
-
         
     }
 }

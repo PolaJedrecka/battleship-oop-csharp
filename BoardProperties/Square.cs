@@ -54,15 +54,18 @@ namespace battleship.BoardProperties
             }
             else if (_status == SquareStatus.Hit)
             {
-                return " X ";
+                // return " ⓧ ";
+                return " C ";
             }
             else if (_status == SquareStatus.Missed)
             {
-                return " # ";
+                // return " ✘ ";
+                return " B ";
             }
             else
             {
-                return " $ ";
+                // return " Ο ";
+                return " A ";
             }
         }
     }

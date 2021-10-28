@@ -1,23 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using battleship.GameProperties;
 using battleship.ShipProperties;
 
 namespace battleship.Users.ComputerPlayer
 {
+    using BoardProperties;
+
     public class EasyComputerPlayer : Player
     {
-        public override (int y, int x) GiveAShootCoords(int size)
+        Random random = new Random();
+        private Display display = new Display();
+        
+        public override (int y, int x) GiveAShootCoords(int size, Board enemyBoard)
         {
-            Random random = new Random();
+            
             int x = random.Next(0, size);
             int y = random.Next(0, size);
-            
+            display.DisplayGameplay(new Cursor(y,x,true),enemyBoard);
             return (y, x);
         }
 
         public override void DeployShips(List<Ship> listOfships)
         {
-            throw new NotImplementedException();
+            setLives(listOfships);
+            _boardFactory.ManualPlacement(listOfships, ownBoard);
         }
     }
 }

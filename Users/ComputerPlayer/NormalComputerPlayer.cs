@@ -3,9 +3,11 @@ using battleship.ShipProperties;
 
 namespace battleship.Users.ComputerPlayer
 {
+    using BoardProperties;
+
     public class NormalComputerPlayer : Player
     {
-        public override (int y, int x) GiveAShootCoords(int size)
+        public override (int y, int x) GiveAShootCoords(int size, Board enemyBoard)
         {
             throw new System.NotImplementedException();
         }
