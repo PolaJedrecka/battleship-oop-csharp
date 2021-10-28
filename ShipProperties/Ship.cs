@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using battleship.Board;
+using battleship.BoardProperties;
 
-namespace battleship.Ship
+namespace battleship.ShipProperties
 {
     public class Ship
     {

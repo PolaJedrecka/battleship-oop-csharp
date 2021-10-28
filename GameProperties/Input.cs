@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using battleship.Board;
+using battleship.BoardProperties;
+using battleship.ShipProperties;
 
-namespace battleship.Game
+namespace battleship.GameProperties
 {
     public class Input
     {
         private Display _display = new Display();
 
-        public (int, int) CursorMovement(Cursor cursor, Board.Board board, Ship.Ship ship = null)
+        public (int, int) CursorMovement(Cursor cursor, Board board, Ship ship = null)
         {
             ConsoleKey _key;
             int length;
@@ -98,7 +99,7 @@ namespace battleship.Game
             return (cursor.GetY(), cursor.GetX());
         }
 
-        public void SetPlacementNotOkAroundSquare(int y, int x, Board.Board board, bool isVertical)
+        public void SetPlacementNotOkAroundSquare(int y, int x, Board board, bool isVertical)
         {
             if (y - 1 > 0 && x - 1 > 0)
             {
@@ -146,7 +147,7 @@ namespace battleship.Game
             }
         }
 
-        public void ShipPlacement(Cursor cursor, Ship.Ship ship, Board.Board board)
+        public void ShipPlacement(Cursor cursor, Ship ship, Board board)
         {
             (int y, int x) firstBlockOfShip = CursorMovement(cursor, board, ship);
 
@@ -167,7 +168,7 @@ namespace battleship.Game
             }
         }
 
-        public bool checkPositionIsOk(Cursor cursor, Board.Board board, int length)
+        public bool checkPositionIsOk(Cursor cursor, Board board, int length)
         {
             for (int i = 0; i < length; i++)
             {
@@ -188,6 +189,11 @@ namespace battleship.Game
             }
 
             return true;
+        }
+
+        public ConsoleKey GetKey()
+        {
+            return Console.ReadKey().Key;
         }
     }
 }

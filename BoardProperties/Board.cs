@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace battleship.Board
+namespace battleship.BoardProperties
 {
     public class Board
     {
