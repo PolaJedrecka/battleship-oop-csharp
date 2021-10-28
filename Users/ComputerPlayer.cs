@@ -1,6 +1,6 @@
 ﻿namespace battleship.Users
 {
-    public class ComputerPlayer
+    public class ComputerPlayer : Player
     {
         
     }
