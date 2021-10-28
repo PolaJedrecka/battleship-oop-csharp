@@ -14,8 +14,20 @@ namespace battleship.Board
             Status = SquareStatus.Empty;
         }
 
-        public void DisplaySquareStatus()
+        public void SetMissedStatus()
         {
+            Status = SquareStatus.Missed;
+        }
+
+        public void SetHitStatus()
+        {
+            Status = SquareStatus.Hit;
+        }
+        
+        public void SetShipStatus()
+        {
+            Status = SquareStatus.Ship;
+            // setPlacementNotOK();
         }
 
         public string GetCharacter()
