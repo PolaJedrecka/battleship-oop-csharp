@@ -8,7 +8,7 @@ namespace battleship.GameProperties
     {
         public int GameMode { get; set; }
 
-        public string OponentMode { get; set; }
+        public string OpponentMode { get; set; }
         
         public void DisplayBoard(Cursor cursor)
         {
@@ -41,7 +41,7 @@ namespace battleship.GameProperties
             Console.BackgroundColor = backgroundColor;
         }
 
-        public void DisplayBoardShipPlacment(Cursor cursor, int shipLength)
+        public void DisplayBoardShipPlacement(Cursor cursor, int shipLength)
         {
             Console.Clear();
             ConsoleColor foregroundColor = Console.ForegroundColor;
@@ -173,14 +173,14 @@ namespace battleship.GameProperties
             int result = Switcher(pointer);
             if (result == 0)
             {
-                OponentMode = "Player vs. Player";
+                OpponentMode = "Player vs. Player";
             } else if (result == 1)
             {
-                OponentMode = "Player vs. Computer";
+                OpponentMode = "Player vs. Computer";
             }
             else
             {
-                OponentMode = "Computer vs. Computer";
+                OpponentMode = "Computer vs. Computer";
             }
         }
 
@@ -242,6 +242,12 @@ namespace battleship.GameProperties
                 Console.WriteLine(highScore);
             }
             Console.WriteLine("Press any key to continue...");
+        }
+
+        public void DisplayThePlayerWhichWonTheGame(string ThePlayerWhichWonTheGameAndIsTheWinner)
+        {
+            Console.WriteLine($"The winner is... {ThePlayerWhichWonTheGameAndIsTheWinner}");
+            // TODO: może jakiś score?
         }
     }
 }
