@@ -19,13 +19,35 @@ namespace battleship.GameProperties
             switch (gameMode)
             {
                 case 0:
-                    _listOfAvailableShips = new List<Ship> {new Ship(ShipType.Submarine), new Ship(ShipType.Cruiser)};
+                    _listOfAvailableShips = new List<Ship>
+                    {
+                        new Ship(ShipType.Carrier),
+                        new Ship(ShipType.Carrier),
+                    };
                     break;
                 case 1:
-                    _listOfAvailableShips = new List<Ship> {new Ship(ShipType.Cruiser), new Ship(ShipType.Cruiser)};
+                    _listOfAvailableShips = new List<Ship>
+                    {
+                        new Ship(ShipType.Carrier),
+                        new Ship(ShipType.Cruiser),
+                        new Ship(ShipType.Battleship),
+                        new Ship(ShipType.Submarine),
+                        new Ship(ShipType.Destroyer),
+                        new Ship(ShipType.Carrier)
+                    };
                     break;
                 case 2:
-                    _listOfAvailableShips = new List<Ship> {new Ship(ShipType.Destroyer)};
+                    _listOfAvailableShips = new List<Ship>
+                    {
+                        new Ship(ShipType.Carrier),
+                        new Ship(ShipType.Carrier),
+                        new Ship(ShipType.Carrier),
+                        new Ship(ShipType.Carrier),
+                        new Ship(ShipType.Carrier),
+                        new Ship(ShipType.Carrier),
+                        new Ship(ShipType.Carrier),
+                        new Ship(ShipType.Destroyer)
+                    };
                     break;
             }
         }
@@ -107,7 +129,8 @@ namespace battleship.GameProperties
 
         private void Shoot(Player shooter, Player receiver)
         {
-            (int y, int x) shootCoords = shooter.GiveAShootCoords(receiver.GetOwnBoard().GetSize(), receiver.GetOwnBoard());
+            (int y, int x) shootCoords =
+                shooter.GiveAShootCoords(receiver.GetOwnBoard().GetSize(), receiver.GetOwnBoard());
             Square shootSquare = receiver.GetOwnBoard().GetSquare(shootCoords.y, shootCoords.x);
             if (shootSquare.GetStatus() == SquareStatus.Ship)
             {
@@ -131,7 +154,8 @@ namespace battleship.GameProperties
                 Winner = "Player 2";
                 return true;
             }
-            else if (!player2.GetIsAlive())
+            
+            if (!player2.GetIsAlive())
             {
                 Winner = "Player 1";
                 return true;

@@ -9,7 +9,7 @@ namespace battleship.BoardProperties
         {
             _size = size;
             _ocean = new Square[size, size];
-            
+
             for (int y = 0; y < size; y++)
             {
                 for (int x = 0; x < size; x++)
@@ -18,10 +18,10 @@ namespace battleship.BoardProperties
                 }
             }
         }
-        
+
         public Square GetSquare(int y, int x)
         {
-            return _ocean[y,x];
+            return _ocean[y, x];
         }
 
         public int GetSize()

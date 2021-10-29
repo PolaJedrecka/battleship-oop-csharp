@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using battleship.BoardProperties;
+﻿using System.Collections.Generic;
 using battleship.GameProperties;
-using battleship.ShipProperties;
 
 namespace battleship
 {
@@ -10,6 +7,7 @@ namespace battleship
     {
         private static Input _input = new Input();
         private static Display _display = new Display();
+
         public static void Main(string[] args)
         {
             bool gameIsRunning = false;
@@ -23,9 +21,10 @@ namespace battleship
                     string opponentMode = _display.OpponentMode;
                     Game game = new Game(gameMode);
                     game.Run(gameMode, opponentMode);
-                } else if (gameMode == 3)
+                }
+                else if (gameMode == 3)
                 {
-                    List<string> test = new List<string>() {"Not implemented yet"};
+                    List<string> test = new List<string> {"Not implemented yet"};
                     _display.DisplayHighScores(test);
                     _input.GetKey();
                 }
@@ -34,7 +33,6 @@ namespace battleship
                     gameIsRunning = true;
                 }
             }
-            
         }
     }
 }

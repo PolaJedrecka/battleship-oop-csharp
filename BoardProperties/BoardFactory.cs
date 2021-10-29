@@ -22,7 +22,7 @@ namespace battleship.BoardProperties
                 int y = 0;
                 while (!isSuccessed)
                 {
-                    // int randomIsVertical = _random.Next(0, 1);
+                    // int randomIsVertical = _random.Next(0, 1); normalnie by tego nie bylo ale mam pytanie do mentorka :-*
                     // if (randomIsVertical == 0)
                     // {
                     //     isVertical = false;

@@ -1,5 +1,3 @@
-using System;
-
 namespace battleship.BoardProperties
 {
     public class Cursor
@@ -25,21 +23,21 @@ namespace battleship.BoardProperties
             valueTuple.x--;
             Position = valueTuple;
         }
-        
+
         public void MoveRight()
         {
             var valueTuple = this.Position;
             valueTuple.x++;
             Position = valueTuple;
         }
-        
+
         public void MoveUp()
         {
             var valueTuple = this.Position;
             valueTuple.y--;
             Position = valueTuple;
         }
-        
+
         public void MoveDown()
         {
             var valueTuple = this.Position;
@@ -61,7 +59,7 @@ namespace battleship.BoardProperties
         {
             isVertical = false;
         }
-        
+
         public void ChangeCursorVertical()
         {
             isVertical = true;

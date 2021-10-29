@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using battleship.BoardProperties;
 using battleship.ShipProperties;
 
@@ -14,7 +13,7 @@ namespace battleship.GameProperties
             ConsoleKey _key;
             int cursorLength;
             bool isSuccess = false;
-            
+
             while (!isSuccess)
             {
                 if (ship is null)
@@ -27,7 +26,6 @@ namespace battleship.GameProperties
                     bool isOk = checkPositionIsOk(cursor, board, ship.GetLength());
                     _display.DisplayBoardWhenShipIsPlaced(cursor, board, isOk, ship.GetLength());
                     cursorLength = ship.GetLength();
-                    
                 }
 
                 _key = Console.ReadKey().Key;
@@ -38,8 +36,9 @@ namespace battleship.GameProperties
                         {
                             cursor.MoveLeft();
                         }
+
                         break;
-                    
+
                     case ConsoleKey.D:
                         if (!cursor.GetIsVertical())
                         {
@@ -52,7 +51,7 @@ namespace battleship.GameProperties
                         }
 
                         break;
-                    
+
                     case ConsoleKey.W:
                         if (cursor.GetY() > 0)
                         {
@@ -60,7 +59,7 @@ namespace battleship.GameProperties
                         }
 
                         break;
-                    
+
                     case ConsoleKey.S:
                         if (cursor.GetIsVertical())
                         {
@@ -73,7 +72,7 @@ namespace battleship.GameProperties
                         }
 
                         break;
-                    
+
                     case ConsoleKey.Q:
                         if (cursor.GetIsVertical() && cursor.GetY() + cursorLength <= board.GetSize())
                         {
@@ -85,7 +84,7 @@ namespace battleship.GameProperties
                         }
 
                         break;
-                    
+
                     case ConsoleKey.Enter:
                         if (!(ship is null) && checkPositionIsOk(cursor, board, ship.GetLength()))
                         {
@@ -102,7 +101,7 @@ namespace battleship.GameProperties
 
             return (cursor.GetY(), cursor.GetX());
         }
-        
+
         public bool checkPositionIsOk(Cursor cursor, Board board, int length)
         {
             for (int i = 0; i < length; i++)
@@ -116,7 +115,7 @@ namespace battleship.GameProperties
                 }
                 else
                 {
-                    if (!board.GetSquare(cursor.GetY()+i, cursor.GetX()).GetPlacementOk())
+                    if (!board.GetSquare(cursor.GetY() + i, cursor.GetX()).GetPlacementOk())
                     {
                         return false;
                     }

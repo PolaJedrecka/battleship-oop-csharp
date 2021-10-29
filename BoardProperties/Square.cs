@@ -1,13 +1,10 @@
-﻿using System;
-
-namespace battleship.BoardProperties
+﻿namespace battleship.BoardProperties
 {
     public class Square
     {
-        
         private (int y, int x) _position;
         private SquareStatus _status;
-        private bool _isPlacementOk; 
+        private bool _isPlacementOk;
 
         public Square(int y, int x)
         {
@@ -20,11 +17,12 @@ namespace battleship.BoardProperties
         {
             _isPlacementOk = false;
         }
-        
+
         public bool GetPlacementOk()
         {
             return _isPlacementOk;
         }
+
         public void SetMissedStatus()
         {
             _status = SquareStatus.Missed;
@@ -34,7 +32,7 @@ namespace battleship.BoardProperties
         {
             _status = SquareStatus.Hit;
         }
-        
+
         public void SetShipStatus()
         {
             _status = SquareStatus.Ship;
@@ -45,27 +43,24 @@ namespace battleship.BoardProperties
         {
             return _status;
         }
-        
+
         public string GetCharacter()
-        { 
+        {
             if (_status == SquareStatus.Empty)
             {
                 return "   ";
             }
             else if (_status == SquareStatus.Hit)
             {
-                // return " ⓧ ";
-                return " C ";
+                return " ⓧ ";
             }
             else if (_status == SquareStatus.Missed)
             {
-                // return " ✘ ";
-                return " B ";
+                return " ✘ ";
             }
             else
             {
-                // return " Ο ";
-                return " A ";
+                return " Ο ";
             }
         }
     }

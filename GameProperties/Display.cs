@@ -1,12 +1,10 @@
 ﻿using System;
 using battleship.BoardProperties;
 using System.Collections.Generic;
-using battleship.Users;
+using System.Text;
 
 namespace battleship.GameProperties
 {
-    using ShipProperties;
-
     public class Display
     {
         public int GameMode { get; set; }
@@ -45,7 +43,7 @@ namespace battleship.GameProperties
                         Console.ForegroundColor = ConsoleColor.Gray;
                         Console.BackgroundColor = ConsoleColor.DarkBlue;
                     }
-
+                    Console.OutputEncoding = Encoding.UTF8;
                     Console.Write(board.GetSquare(y, x).GetCharacter());
                 }
 
@@ -83,6 +81,7 @@ namespace battleship.GameProperties
                     }
                     else
                     {
+                        Console.OutputEncoding = Encoding.UTF8;
                         Console.Write(board.GetSquare(y, x).GetCharacter());
                     }
                 }
@@ -130,7 +129,7 @@ namespace battleship.GameProperties
 
         private int DisplayGameModes(Input input)
         {
-            List<string> listOfModes = new List<string>() {"Easy", "Normal", "Hard"};
+            List<string> listOfModes = new List<string> {"Easy", "Normal", "Hard"};
             bool success = false;
             int pointer = 0;
             while (!success)
@@ -262,10 +261,9 @@ namespace battleship.GameProperties
             Console.WriteLine("Press any key to continue...");
         }
 
-        public void DisplayOutcomeWithThePlayerWhichWonTheGame(string ThePlayerWhichWonTheGameAndIsTheWinner)
+        public void DisplayOutcomeWithThePlayerWhichWonTheGame(string thePlayerWhichWonTheGameAndIsTheWinner)
         {
-            Console.WriteLine($"The winner is... {ThePlayerWhichWonTheGameAndIsTheWinner}");
-            // TODO: może jakiś score?
+            Console.WriteLine($"The winner is... {thePlayerWhichWonTheGameAndIsTheWinner}");
         }
     }
 }

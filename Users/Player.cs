@@ -7,7 +7,7 @@ namespace battleship.Users
 {
     public abstract class Player
     {
-        protected Board ownBoard = new Board(10);
+        protected Board ownBoard = new Board(20);
         protected bool isAlive = true;
         protected int lives;
         protected BoardFactory _boardFactory= new BoardFactory();

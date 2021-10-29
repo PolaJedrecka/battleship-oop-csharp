@@ -11,13 +11,12 @@ namespace battleship.Users.ComputerPlayer
     {
         Random random = new Random();
         private Display display = new Display();
-        
+
         public override (int y, int x) GiveAShootCoords(int size, Board enemyBoard)
         {
-            
             int x = random.Next(0, size);
             int y = random.Next(0, size);
-            display.DisplayGameplay(new Cursor(y,x,true),enemyBoard);
+            display.DisplayGameplay(new Cursor(y, x, true), enemyBoard);
             return (y, x);
         }
 
@@ -25,11 +24,6 @@ namespace battleship.Users.ComputerPlayer
         {
             setLives(listOfships);
             _boardFactory.RandomPlacement(listOfships, ownBoard);
-        }
-
-        public void Print()
-        {
-            
         }
     }
 }
