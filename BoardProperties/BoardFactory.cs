@@ -113,7 +113,7 @@ namespace battleship.BoardProperties
             }
             else
             {
-                firstBlockOfShip = _input.CursorMovement(cursor, board, ship);
+                firstBlockOfShip = _input.CursorMovement(cursor, board, "Player 1", ship);
             }
 
             for (int i = 0; i < ship.GetLength(); i++)

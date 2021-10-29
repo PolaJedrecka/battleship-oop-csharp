@@ -16,14 +16,18 @@ namespace battleship.Users.ComputerPlayer
         {
             int x = random.Next(0, size);
             int y = random.Next(0, size);
-            display.DisplayGameplay(new Cursor(y, x, true), enemyBoard);
+            display.DisplayGameplay(new Cursor(y,x,true), enemyBoard, Name);
             return (y, x);
         }
 
         public override void DeployShips(List<Ship> listOfships)
         {
             setLives(listOfships);
-            _boardFactory.RandomPlacement(listOfships, ownBoard);
+            _boardFactory.RandomPlacement(listOfships, OwnBoard);
+        }
+
+        public EasyComputerPlayer(string name) : base(name)
+        {
         }
     }
 }

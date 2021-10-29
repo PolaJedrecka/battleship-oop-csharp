@@ -9,17 +9,20 @@ namespace battleship.Users
     {
         private Input _input = new Input();
         private Cursor _cursor = new Cursor();
-        
-        
+
         public override (int y, int x) GiveAShootCoords(int size, Board enemyBoard)
         {
-            return _input.CursorMovement(_cursor, enemyBoard);
+            return _input.CursorMovement(_cursor, enemyBoard, Name);
         }
 
         public override void DeployShips(List<Ship> listOfShips)
         {
             setLives(listOfShips);
-            _boardFactory.ManualPlacement(listOfShips,ownBoard);
+            _boardFactory.ManualPlacement(listOfShips,OwnBoard);
+        }
+
+        public HumanPlayer(string name) : base(name)
+        {
         }
     }
 }

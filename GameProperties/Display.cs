@@ -8,7 +8,6 @@ namespace battleship.GameProperties
     public class Display
     {
         public int GameMode { get; set; }
-
         public string OpponentMode { get; set; }
 
         public void DisplayBoardWhenShipIsPlaced(Cursor cursor, Board board, bool isOk = true, int shipLength = 1)
@@ -54,12 +53,12 @@ namespace battleship.GameProperties
             Console.BackgroundColor = backgroundColor;
         }
 
-        public void DisplayGameplay(Cursor cursor, Board board)
+        public void DisplayGameplay(Cursor cursor, Board board, string Shooter)
         {
             Console.Clear();
+            WhichTurnIsIt(Shooter);
             ConsoleColor foregroundColor = Console.ForegroundColor;
             ConsoleColor backgroundColor = Console.BackgroundColor;
-
             for (int y = 0; y < board.GetSize(); y++)
             {
                 for (int x = 0; x < board.GetSize(); x++)
@@ -85,7 +84,6 @@ namespace battleship.GameProperties
                         Console.Write(board.GetSquare(y, x).GetCharacter());
                     }
                 }
-
                 Console.WriteLine();
             }
 
@@ -265,5 +263,11 @@ namespace battleship.GameProperties
         {
             Console.WriteLine($"The winner is... {thePlayerWhichWonTheGameAndIsTheWinner}");
         }
+
+        public void WhichTurnIsIt(string Shooter)
+        {
+            Console.WriteLine($"Now it's {Shooter} turn!!!");
+        }
+        
     }
 }

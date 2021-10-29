@@ -56,27 +56,27 @@ namespace battleship.GameProperties
         {
             if (opponentMode == "Player vs. Player")
             {
-                Player player1 = new HumanPlayer();
-                Player player2 = new HumanPlayer();
+                Player player1 = new HumanPlayer("Player 1");
+                Player player2 = new HumanPlayer("Player 2");
                 Round(player1, player2);
             }
             else if (opponentMode == "Player vs. Computer")
             {
-                Player player1 = new HumanPlayer();
+                Player player1 = new HumanPlayer("Player 1");
                 Player player2;
                 switch (gameMode)
                 {
                     case 0:
-                        player2 = new EasyComputerPlayer();
+                        player2 = new EasyComputerPlayer("Player 2");
                         break;
                     case 1:
-                        player2 = new NormalComputerPlayer();
+                        player2 = new NormalComputerPlayer("Player 2");
                         break;
                     case 2:
-                        player2 = new HardComputerPlayer();
+                        player2 = new HardComputerPlayer("Player 2");
                         break;
                     default:
-                        player2 = new NormalComputerPlayer();
+                        player2 = new NormalComputerPlayer("Player 2");
                         break;
                 }
 
@@ -89,20 +89,20 @@ namespace battleship.GameProperties
                 switch (gameMode)
                 {
                     case 0:
-                        player1 = new EasyComputerPlayer();
-                        player2 = new EasyComputerPlayer();
+                        player1 = new EasyComputerPlayer("Player 1");
+                        player2 = new EasyComputerPlayer("Player 2");
                         break;
                     case 1:
-                        player1 = new NormalComputerPlayer();
-                        player2 = new NormalComputerPlayer();
+                        player1 = new NormalComputerPlayer("Player 1");
+                        player2 = new NormalComputerPlayer("Player 2");
                         break;
                     case 2:
-                        player1 = new HardComputerPlayer();
-                        player2 = new HardComputerPlayer();
+                        player1 = new HardComputerPlayer("Player 1");
+                        player2 = new HardComputerPlayer("Player 2");
                         break;
                     default:
-                        player1 = new NormalComputerPlayer();
-                        player2 = new NormalComputerPlayer();
+                        player1 = new NormalComputerPlayer("Player 1");
+                        player2 = new NormalComputerPlayer("Player 2");
                         break;
                 }
 
@@ -120,7 +120,6 @@ namespace battleship.GameProperties
             {
                 Shoot(shooter, receiver);
                 (shooter, receiver) = (receiver, shooter);
-                Console.ReadKey();
             }
 
             _display.DisplayOutcomeWithThePlayerWhichWonTheGame(Winner);
@@ -151,13 +150,13 @@ namespace battleship.GameProperties
         {
             if (!player1.GetIsAlive())
             {
-                Winner = "Player 2";
+                Winner = player2.Name;
                 return true;
             }
             
             if (!player2.GetIsAlive())
             {
-                Winner = "Player 1";
+                Winner = player1.Name;
                 return true;
             }
 

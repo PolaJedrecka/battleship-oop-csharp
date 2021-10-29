@@ -16,5 +16,9 @@ namespace battleship.Users.ComputerPlayer
         {
             throw new System.NotImplementedException();
         }
+
+        public NormalComputerPlayer(string name) : base(name)
+        {
+        }
     }
 }

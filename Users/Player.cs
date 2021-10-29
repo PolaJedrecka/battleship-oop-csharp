@@ -7,17 +7,22 @@ namespace battleship.Users
 {
     public abstract class Player
     {
-        protected Board ownBoard = new Board(20);
+        protected Board OwnBoard = new Board(20);
+        public string Name { get; set; }
         protected bool isAlive = true;
         protected int lives;
         protected BoardFactory _boardFactory= new BoardFactory();
-
         public abstract (int y, int x) GiveAShootCoords(int size, Board enemyBoard);
         public abstract void DeployShips(List<Ship> listOfships);
 
+        public Player(string name)
+        {
+            Name = name;
+        }
+        
         public Board GetOwnBoard()
         {
-            return ownBoard;
+            return OwnBoard;
         }
         
         public bool GetIsAlive()
